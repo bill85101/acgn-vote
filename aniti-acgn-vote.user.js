@@ -43,8 +43,8 @@ function blockVote() {
   $("button.btn.btn-primary.btn-sm:eq(0)").click();
 }
 
-
 function textReturn(){
+  var subbutton = document.getElementById('text-Return');
   var content =  '<div>' + document.getElementsByClassName("logData")[0].innerHTML.replace(/\n/g, '').replace(/ /gi, '') + '</div>';
   var text = $(content).text();
   var copyThis = text;
@@ -53,7 +53,13 @@ function textReturn(){
         return copyThis;
     }
   });
-  alert('已複製到剪貼簿');
+  subbutton.innerText = "已複製";
+  setTimeout(function(){
+    //do what you need here
+    subbutton.innerText = "複製";
+  }, 5000);
+
+  //alert('已複製到剪貼簿');
 }
 
 (function() {
@@ -67,4 +73,3 @@ function textReturn(){
   };
   document.getElementsByTagName("head")[0].appendChild(script);
 })();
-
