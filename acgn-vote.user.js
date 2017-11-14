@@ -45,7 +45,7 @@ function blockVote() {
 
 function textReturn(){
   var subbutton = document.getElementById('text-Return');
-  var content =  '<div>' + document.getElementsByClassName("logData")[0].innerHTML.replace(/\n/g, '').replace(/ /gi, '') + '</div>';
+  var content =  '<div>' + document.getElementsByClassName("logData")[0].innerHTML.replace(/\n/g, '').replace(/ {2,}/gi, '') + '</div>';
   var text = $(content).text();
   var copyThis = text;
   new Clipboard('.btn', {
