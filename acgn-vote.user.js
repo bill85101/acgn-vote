@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         aniti-acgn-vote
-// @version      1.0
+// @name         acgn-vote
+// @version      beta 1.1
 // @description  easy to vote
-// @author       Juise
+// @author       Juisen
 // @match        https://acgn-stock.com/*
 // @grant        none
 // ==/UserScript==
@@ -18,10 +18,20 @@ function addPluginMenu() {
         <li class="nav-item">
           <a class="nav-link btn btn-primary" href="#" id="text-Return">複製</a>
         </li>
+                <li class="nav-item">
+          <a class="nav-link btn btn-primary" href="#" id="test-01">測試</a>
+        </li>
       `).insertAfter($(".nav-item").last());
   pluginMenu.find("#open-folder").on("click", openfolder);
   pluginMenu.find("#block-vote").on("click", blockVote);
   pluginMenu.find("#text-Return").on("click", textReturn);
+  pluginMenu.find("#test-01").on("click", test01);
+}
+
+function test01(){
+blockVote();
+setTimeout(function(){autoagree();}, 1000);
+setTimeout(function(){textReturn();}, 3000);
 }
 
 function openfolder() {
@@ -37,10 +47,31 @@ function openfolder() {
     clearInterval();
   }
 
+
 }
 
 function blockVote() {
   $("button.btn.btn-primary.btn-sm:eq(0)").click();
+}
+
+function autoagree(){
+$('div[btn btn-primary]' && 'button[type="submit"]').click();
+}
+
+function autoVote() {
+  var votetext = $("p").text();
+  $("button.btn.btn-primary.btn-sm:eq(0)").click();
+  setTimeout(function(){
+  votetext = $("p").text();
+  if (votetext == "")
+  {
+    setTimeout(function(){autoagree();}, 1000);
+  }
+  else
+  {
+  alert(1);
+  }}, 2000);
+  setTimeout(function(){test01();}, 3000);
 }
 
 function textReturn(){
